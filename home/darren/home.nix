@@ -7,8 +7,11 @@
 
   imports =
     (import ./apps/_imports.nix) ++
-    (import ./gaming/_imports.nix) ++ 
-    [ ./dev/tools.nix ];
+    (import ./gaming/_imports.nix) ++
+    [ ./dev/tools.nix
+      ./gaming/steam.nix
+      ./gaming/gamemode.nix
+    ];
 
   programs.git = {
     enable = true;
@@ -30,7 +33,6 @@
   # Gaming toggles
 
   # Enable some gaming tools
-  hmGaming.steam.enable    = true;
-  hmGaming.gamemode.enable = true;
+  
 }
 
