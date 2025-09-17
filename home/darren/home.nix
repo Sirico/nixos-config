@@ -5,28 +5,21 @@
   home.homeDirectory = "/home/darren";
   home.stateVersion = "25.05";
 
-  imports = [
-    ./apps/_imports.nix
-    ./dev-tools.nix
-  ];
-  
-  
-  
+  imports =
+    (import ./apps/_imports.nix) ++ [
+      ./dev-tools.nix
+    ];
 
-  ##################### Git ###########################
   programs.git = {
     enable = true;
     userName = "Darren Gregory";
     userEmail = "darrenjgregory@gmail.com";
   };
 
-  ##################### Home Manager ##################
   programs.home-manager.enable = true;
-
-  ##################### Zsh ###########################
   programs.zsh.enable = true;
 
-  ##################### Toggle apps ###################
+  # App toggles
   hmApps.vivaldi.enable   = true;
   hmApps.bitwarden.enable = true;
   hmApps.bitwarden.cli    = true;
