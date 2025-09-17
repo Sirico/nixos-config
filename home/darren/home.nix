@@ -7,7 +7,7 @@
 
   imports =
     (import ./apps/_imports.nix) ++ [
-      ./dev-tools.nix
+      ./dev/tools.nix
     ];
 
   programs.git = {

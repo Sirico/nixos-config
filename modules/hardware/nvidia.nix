@@ -8,9 +8,9 @@ in {
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
-    open = false;
+    powerManagement.enable = false;  # Can be true on laptops
+    open = false;                    # Proprietary driver
     nvidiaSettings = true;
-    package = nvidiaPackages.stable;
+    package = nvidiaPackages.stable; # Or .beta if you want bleeding edge
   };
 }
