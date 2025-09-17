@@ -5,7 +5,13 @@
   home.homeDirectory = "/home/darren";
   home.stateVersion = "25.05";
 
-  imports = import ./apps/_imports.nix;
+  imports = [
+    ./apps/_imports.nix
+    ./dev-tools.nix
+  ];
+  
+  
+  
 
   ##################### Git ###########################
   programs.git = {
