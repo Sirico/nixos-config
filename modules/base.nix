@@ -12,6 +12,8 @@
     git
     curl
     wget
+    btrfs-progs
+    zenity
   ];
 
   #### Editor default
