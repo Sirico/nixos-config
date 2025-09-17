@@ -1,28 +1,27 @@
 {
-  description = "Darren's NixOS Config";
+  description = "Stable NixOS config with Home Manager apps";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-    let
+  outputs = { self, nixpkgs, home-manager, ... }: {
+    nixosConfigurations.nitro-5 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-      lib = nixpkgs.lib;
-      mkHost = name: configFile:
-        lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/${name}/${configFile}
-            home-manager.nixosModules.home-manager
-          ];
-        };
-    in {
-      nixosConfigurations = {
-        nitro-5 = mkHost "nitro-5" "configuration.nix";
-      };
+      modules = [
+        ./hosts/nitro-5/configuration.nix
+
+        # Home Manager system integration
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.darren = import ./home/darren/home.nix;
+        }
+      ];
     };
+  };
 }
+
