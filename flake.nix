@@ -10,10 +10,10 @@
   outputs = { self, nixpkgs, home-manager, ... }: {
     nixosConfigurations.nitro-5 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+
       modules = [
         ./hosts/nitro-5/configuration.nix
 
-        # Home Manager system integration
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
