@@ -5,13 +5,42 @@
   home.homeDirectory = "/home/darren";
   home.stateVersion = "25.05";
 
-  imports =
-    (import ./apps/_imports.nix) ++
-    (import ./gaming/_imports.nix) ++
-    [ ./dev/tools.nix
-      ./gaming/steam.nix
-      ./gaming/gamemode.nix
-    ];
+imports = [
+  ./apps/bitwarden.nix
+  ./apps/obsidian.nix
+  ./apps/signal.nix
+  ./apps/vivaldi.nix
+  ./apps/vscode.nix
+
+  ./gaming/steam.nix
+  ./gaming/gamemode.nix
+
+  ./dev/tools.nix
+imports = [
+  ./apps/bitwarden.nix
+  ./apps/obsidian.nix
+  ./apps/signal.nix
+  ./apps/vivaldi.nix
+  ./apps/vscode.nix
+
+  ./gaming/steam.nix
+  ./gaming/gamemode.nix
+
+  ./dev/tools.nix
+];
+imports = [
+  ./apps/bitwarden.nix
+  ./apps/obsidian.nix
+  ./apps/signal.nix
+  ./apps/vivaldi.nix
+  ./apps/vscode.nix
+
+  ./gaming/steam.nix
+  ./gaming/gamemode.nix
+
+  ./dev/tools.nix
+];
+
 
   programs.git = {
     enable = true;
