@@ -6,9 +6,9 @@
   home.stateVersion = "25.05";
 
   imports =
-    (import ./apps/_imports.nix) ++ [
-      ./dev/tools.nix
-    ];
+    (import ./apps/_imports.nix) ++
+    (import ./gaming/_imports.nix) ++ 
+    [ ./dev/tools.nix ];
 
   programs.git = {
     enable = true;
@@ -26,5 +26,11 @@
   hmApps.signal.enable    = true;
   hmApps.obsidian.enable  = true;
   hmApps.vscode.enable    = true;
+
+  # Gaming toggles
+
+  # Enable some gaming tools
+  hmGaming.steam.enable    = true;
+  hmGaming.gamemode.enable = true;
 }
 
